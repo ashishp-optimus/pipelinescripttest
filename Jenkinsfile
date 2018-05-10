@@ -5,8 +5,11 @@ pipeline {
     stage('Test') { 
 	agent { label 'cd-env' }
             steps {
-                // Steps to execute scripts
-		
+                node {
+   notifyStarted()
+   /* ... existing build steps ... */
+}
+
 	   emailext (
       		   
       subject: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
