@@ -1,7 +1,7 @@
 pipeline {
    agent none
     stages {
-    stage('Test') { 
+    stage('Test') {
 	agent { label 'cd-env' }
             try {
     notifyBuild('STARTED')
@@ -15,9 +15,7 @@ pipeline {
   } finally {
     // Success or failure, always send notifications
     notifyBuild(currentBuild.result)
-  }
-}
- 
+  } 
 def notifyBuild(String buildStatus = 'STARTED') {
   // build status of null means successful
   buildStatus =  buildStatus ?: 'SUCCESSFUL'
@@ -55,4 +53,4 @@ def notifyBuild(String buildStatus = 'STARTED') {
 }
 	}
     }
-} 
+}
